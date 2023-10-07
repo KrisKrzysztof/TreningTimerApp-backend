@@ -5,6 +5,7 @@ export interface NewTrainingEntity extends Omit<TrainingEntity, 'id'> {
 export interface TrainingEntity {
     id: string;
     name: string;
+    description: string;
     numberOfSeries: number;
     exercise1name: string;
     exercise1pause: number;
@@ -16,5 +17,5 @@ export interface TrainingEntity {
     exercise4pause?: number;
     exercise5name?: string;
     exercise5pause?: number;
-    exercisesOrderInSerie: string[];
+    exercisesOrderInSerie: string;
 }
