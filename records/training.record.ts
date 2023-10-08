@@ -2,6 +2,7 @@ import {NewTrainingEntity, TrainingEntity} from "../types";
 import {ValidationError} from "../utils/errors";
 import {pool} from "../utils/db";
 import {FieldPacket} from "mysql2";
+import {v4 as uuid} from "uuid";
 
 type TrainingRecordResults = [TrainingEntity[], FieldPacket[]];
 
@@ -71,6 +72,57 @@ export class TrainingRecord implements TrainingEntity {
             id,
         }) as TrainingRecordResults;
         return results.length === 0 ? null : new TrainingRecord(results[0]);
+    }
+
+    async insert(): Promise<string> {
+        if (!this.id) {
+            this.id = uuid();
+        }
+
+        await pool.execute("INSERT INTO `trainings`(`id`,`name`,`description`,`numberOfSeries`,`exerciseOne`,`exerciseTwo`,`exerciseThree`,`exerciseFour`,`exerciseFive`,`exerciseSix`,`exerciseSeven`,`exerciseEight`,`exerciseNine`,`exerciseTen`) VALUES(:id, :name, :description, :numberOfSeries, :exerciseOne, :exerciseTwo, :exerciseThree, :exerciseFour, :exerciseFive, :exerciseSix, :exerciseSeven, exerciseEight, :exerciseNine, exerciseTen)", {
+            id: this.id,
+            name: this.name,
+            description: this.description,
+            numberOfSeries: this.numberOfSeries,
+            exerciseOne: this.exerciseOne,
+            exerciseTwo: !this.exerciseTwo ? null : this.exerciseTwo,
+            exerciseThree: !this.exerciseThree ? null : this.exerciseThree,
+            exerciseFour: !this.exerciseFour ? null : this.exerciseFour,
+            exerciseFive: !this.exerciseFive ? null : this.exerciseFive,
+            exerciseSix: !this.exerciseSix ? null : this.exerciseSix,
+            exerciseSeven: !this.exerciseSeven ? null : this.exerciseSeven,
+            exerciseEight: !this.exerciseEight ? null : this.exerciseEight,
+            exerciseNine: !this.exerciseNine ? null : this.exerciseNine,
+            exerciseTen: !this.exerciseTen ? null : this.exerciseTen,
+        });
+
+        return this.name;
+    }
+
+    async delete(): Promise<string> {
+        await pool.execute("DELETE FROM `trainings` WHERE `id` = :id", {
+            id: this.id,
+        })
+        return this.name;
+    }
+
+    async update(): Promise<void> {
+        await pool.execute("UPDATE `trainings` SET `name` = :name, `description` = description,`numberOfSeries` = :numberOfSeries,`exerciseOne` = :exerciseOne,`exerciseTwo` = :exerciseTwo,`exerciseThree` = :exerciseThree,`exerciseFour` = :exerciseFour,`exerciseFive` = :exerciseFive,`exerciseSix` = :exerciseSix,`exerciseSeven` = :exerciseSeven,`exerciseEight` = :exerciseEight,`exerciseNine` = :exerciseNine,`exerciseTen` = :exerciseTen WHERE `id` = :id", {
+            id: this.id,
+            name: this.name,
+            description: this.description,
+            numberOfSeries: this.numberOfSeries,
+            exerciseOne: this.exerciseOne,
+            exerciseTwo: !this.exerciseTwo ? null : this.exerciseTwo,
+            exerciseThree: !this.exerciseThree ? null : this.exerciseThree,
+            exerciseFour: !this.exerciseFour ? null : this.exerciseFour,
+            exerciseFive: !this.exerciseFive ? null : this.exerciseFive,
+            exerciseSix: !this.exerciseSix ? null : this.exerciseSix,
+            exerciseSeven: !this.exerciseSeven ? null : this.exerciseSeven,
+            exerciseEight: !this.exerciseEight ? null : this.exerciseEight,
+            exerciseNine: !this.exerciseNine ? null : this.exerciseNine,
+            exerciseTen: !this.exerciseTen ? null : this.exerciseTen,
+        });
     }
 
 }
