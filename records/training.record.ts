@@ -22,6 +22,7 @@ export class TrainingRecord implements TrainingEntity {
     exerciseTen?: string;
 
     constructor(obj: NewTrainingEntity) {
+
         if (!obj.name || obj.name.length < 3 || obj.name.length > 25) {
             throw new ValidationError('Nazwa treningu musi zawierać od 3 do 25 znaków.');
         }
@@ -39,24 +40,34 @@ export class TrainingRecord implements TrainingEntity {
         this.description = obj.description;
         this.numberOfSeries = obj.numberOfSeries;
         this.exerciseOne = obj.exerciseOne;
-        this.exerciseTwo = obj.exerciseTwo;
-        this.exerciseThree = obj.exerciseThree;
-        this.exerciseFour = obj.exerciseFour;
-        this.exerciseFive = obj.exerciseFive;
-        this.exerciseSix = obj.exerciseSix;
-        this.exerciseSeven = obj.exerciseSeven;
-        this.exerciseEight = obj.exerciseEight;
-        this.exerciseNine = obj.exerciseNine;
-        this.exerciseTen = obj.exerciseTen;
+        obj.exerciseTwo ?
+            this.exerciseTwo = obj.exerciseTwo : !obj.exerciseTwo;
+        obj.exerciseThree ?
+            this.exerciseThree = obj.exerciseThree : !obj.exerciseThree;
+        obj.exerciseFour ?
+            this.exerciseFour = obj.exerciseFour : !obj.exerciseFour;
+        obj.exerciseFive ?
+            this.exerciseFive = obj.exerciseFive : !obj.exerciseFive;
+        obj.exerciseSix ?
+            this.exerciseSix = obj.exerciseSix : !obj.exerciseSix;
+        obj.exerciseSeven ?
+            this.exerciseSeven = obj.exerciseSeven : !obj.exerciseSeven;
+        obj.exerciseEight ?
+            this.exerciseEight = obj.exerciseEight : !obj.exerciseEight;
+        obj.exerciseNine ?
+            this.exerciseNine = obj.exerciseNine : !obj.exerciseNine;
+        obj.exerciseTen ?
+            this.exerciseTen = obj.exerciseTen : !obj.exerciseTen;
+
     }
 
     static async getAll(): Promise<TrainingRecord[]> {
-        const [results] = await pool.execute("SELECT * FROM `training`") as TrainingRecordResults;
+        const [results] = await pool.execute("SELECT * FROM `trainings`") as TrainingRecordResults;
         return results.map((obj) => new TrainingRecord(obj));
     }
 
     static async getOne(id: string): Promise<TrainingRecord | null> {
-        const [results] = await pool.execute("SELECT * FROM `training` WHERE id = :id", {
+        const [results] = await pool.execute("SELECT * FROM `trainings` WHERE id = :id", {
             id,
         }) as TrainingRecordResults;
 
