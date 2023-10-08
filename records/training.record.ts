@@ -70,7 +70,6 @@ export class TrainingRecord implements TrainingEntity {
         const [results] = await pool.execute("SELECT * FROM `trainings` WHERE id = :id", {
             id,
         }) as TrainingRecordResults;
-
         return results.length === 0 ? null : new TrainingRecord(results[0]);
     }
 

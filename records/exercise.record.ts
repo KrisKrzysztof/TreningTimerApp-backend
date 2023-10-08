@@ -35,4 +35,26 @@ export class ExerciseRecord implements ExerciseEntity {
         return results.length === 0 ? null : new ExerciseRecord(results[0]);
     }
 
+    async insert(): Promise<string> {
+        await pool.execute("INSERT INTO `exercises`(`name`, `pause`) VALUES(:name, :pause)", {
+            name: this.name,
+            pause: this.pause,
+        });
+        return this.name;
+    }
+
+    async delete(): Promise<string> {
+        await pool.execute("DELETE FROM `exercises` WHERE `name` = :name", {
+            name: this.name,
+        })
+        return this.name;
+    }
+
+    async update(): Promise<void> {
+        await pool.execute("UPDATE `exercises` SET `pause` = :pause WHERE `name` = :name", {
+            name: this.name,
+            pause: this.pause,
+        })
+    }
+
 }
