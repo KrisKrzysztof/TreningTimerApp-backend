@@ -1,7 +1,7 @@
 import {Router} from "express";
 import {TrainingRecord} from "../records/training.record";
 
-export const trainingRouter: Router = Router()
+export const trainingsRouter: Router = Router()
 
     .get('/', async (req, res) => {
         const trainings = await TrainingRecord.getAll();

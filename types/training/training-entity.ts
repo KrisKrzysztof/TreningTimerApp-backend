@@ -7,15 +7,14 @@ export interface TrainingEntity {
     name: string;
     description: string;
     numberOfSeries: number;
-    exercise1name: string;
-    exercise1pause: number;
-    exercise2name?: string;
-    exercise2pause?: number;
-    exercise3name?: string;
-    exercise3pause?: number;
-    exercise4name?: string;
-    exercise4pause?: number;
-    exercise5name?: string;
-    exercise5pause?: number;
-    exercisesOrderInSerie: string;
+    exerciseOne: string;
+    exerciseTwo?: string;
+    exerciseThree?: string;
+    exerciseFour?: string;
+    exerciseFive?: string;
+    exerciseSix?: string;
+    exerciseSeven?: string;
+    exerciseEight?: string;
+    exerciseNine?: string;
+    exerciseTen?: string;
 }

@@ -10,17 +10,16 @@ export class TrainingRecord implements TrainingEntity {
     name: string;
     description: string;
     numberOfSeries: number;
-    exercise1name: string;
-    exercise1pause: number;
-    exercise2name?: string;
-    exercise2pause?: number;
-    exercise3name?: string;
-    exercise3pause?: number;
-    exercise4name?: string;
-    exercise4pause?: number;
-    exercise5name?: string;
-    exercise5pause?: number;
-    exercisesOrderInSerie: string;
+    exerciseOne: string;
+    exerciseTwo: string;
+    exerciseThree?: string;
+    exerciseFour?: string;
+    exerciseFive?: string;
+    exerciseSix?: string;
+    exerciseSeven?: string;
+    exerciseEight?: string;
+    exerciseNine?: string;
+    exerciseTen?: string;
 
     constructor(obj: NewTrainingEntity) {
         if (!obj.name || obj.name.length < 3 || obj.name.length > 25) {
@@ -35,23 +34,20 @@ export class TrainingRecord implements TrainingEntity {
             throw new ValidationError('Liczba serii musi być większa od zera i nie może być większa niż 99.');
         }
 
-        // todo dalsze walidacje
-
         this.id = obj.id;
         this.name = obj.name;
         this.description = obj.description;
         this.numberOfSeries = obj.numberOfSeries;
-        this.exercise1name = obj.exercise1name;
-        this.exercise1pause = obj.exercise1pause;
-        this.exercise2name = obj.exercise2name;
-        this.exercise2pause = obj.exercise2pause;
-        this.exercise3name = obj.exercise3name;
-        this.exercise3pause = obj.exercise3pause;
-        this.exercise4name = obj.exercise4name;
-        this.exercise4pause = obj.exercise4pause;
-        this.exercise5name = obj.exercise5name;
-        this.exercise5pause = obj.exercise5pause;
-        this.exercisesOrderInSerie = obj.exercisesOrderInSerie;
+        this.exerciseOne = obj.exerciseOne;
+        this.exerciseTwo = obj.exerciseTwo;
+        this.exerciseThree = obj.exerciseThree;
+        this.exerciseFour = obj.exerciseFour;
+        this.exerciseFive = obj.exerciseFive;
+        this.exerciseSix = obj.exerciseSix;
+        this.exerciseSeven = obj.exerciseSeven;
+        this.exerciseEight = obj.exerciseEight;
+        this.exerciseNine = obj.exerciseNine;
+        this.exerciseTen = obj.exerciseTen;
     }
 
     static async getAll(): Promise<TrainingRecord[]> {

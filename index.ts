@@ -3,7 +3,8 @@ import cors from 'cors';
 require('express-async-errors');
 import { handleError } from "./utils/errors";
 import rateLimit from "express-rate-limit";
-import {trainingRouter} from "./routers/training.router";
+import {trainingsRouter} from "./routers/trainings.router";
+import {exercisesRouter} from "./routers/exercises.router";
 import {config} from "./config/config";
 
 const app = express();
@@ -19,7 +20,8 @@ app.use(rateLimit({
 
 const router = Router();
 
-router.use('/training', trainingRouter);
+router.use('/trainings', trainingsRouter);
+router.use('/exercises', exercisesRouter);
 
 app.use('/', router);
 
