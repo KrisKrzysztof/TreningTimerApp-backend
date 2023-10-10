@@ -23,7 +23,7 @@ const router = Router();
 router.use('/trainings', trainingsRouter);
 router.use('/exercises', exercisesRouter);
 
-app.use('/', router);
+app.use('/api', router);
 
 app.use(handleError);
 
