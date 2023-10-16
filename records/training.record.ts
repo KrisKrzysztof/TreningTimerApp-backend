@@ -42,14 +42,38 @@ export class TrainingRecord implements TrainingEntity {
             throw new ValidationError('Treść ogłoszenia nie może przekraczać 255 znaków.');
         }
 
-        if (obj.numberOfSeries < 1 || obj.numberOfSeries > 99) {
+        if (!obj.numberOfSeries || obj.numberOfSeries < 1 || obj.numberOfSeries > 99) {
             throw new ValidationError('Liczba serii musi być większa od zera i nie może być większa niż 99.');
         }
 
         if (obj.exerciseOne === null) {
             throw new ValidationError('Trening musi zawierać przynajmniej jedno ćwiczenie');
         }
-        // można dodać więcej walidacji
+
+        if (
+            (obj.exerciseOne && !obj.pauseOne ||
+                obj.exerciseOne && (obj.pauseOne < 1 || obj.pauseOne > 9)) ||
+            (obj.exerciseTwo && !obj.pauseTwo ||
+                obj.exerciseTwo && (obj.pauseTwo < 1 || obj.pauseTwo > 9)) ||
+            (obj.exerciseThree && !obj.pauseThree ||
+                obj.exerciseThree && (obj.pauseThree < 1 || obj.pauseThree > 9)) ||
+            (obj.exerciseFour && !obj.pauseFour ||
+                obj.exerciseFour && (obj.pauseFour < 1 || obj.pauseFour > 9)) ||
+            (obj.exerciseFive && !obj.pauseFive ||
+                obj.exerciseFive && (obj.pauseFive < 1 || obj.pauseFive > 9)) ||
+            (obj.exerciseSix && !obj.pauseSix ||
+                obj.exerciseSix && (obj.pauseSix < 1 || obj.pauseSix > 9)) ||
+            (obj.exerciseSeven && !obj.pauseSeven ||
+                obj.exerciseSeven && (obj.pauseSeven < 1 || obj.pauseSeven > 9)) ||
+            (obj.exerciseEight && !obj.pauseEight ||
+                obj.exerciseEight && (obj.pauseEight < 1 || obj.pauseEight > 9)) ||
+            (obj.exerciseNine && !obj.pauseNine ||
+                obj.exerciseNine && (obj.pauseNine < 1 || obj.pauseNine > 9)) ||
+            (obj.exerciseTen && !obj.pauseTen ||
+                obj.exerciseTen && (obj.pauseTen < 1 || obj.pauseTen > 9))
+        ) {
+            throw new ValidationError('Do każdego ćwiczenia musi być przypisana jakaś pauza (liczba między 1 a 9). Jeśli jest to ostatnia pauza w treningu nie będzie ona uwzględniana w trakcie treningu, ale wartość w formularzu należy podać.')
+        }
 
         this.id = obj.id;
         this.name = obj.name;
@@ -113,7 +137,7 @@ export class TrainingRecord implements TrainingEntity {
             this.id = uuid();
         }
 
-        await pool.execute("INSERT INTO `trainings`(`id`,`name`,`description`,`numberOfSeries`,`exerciseOne`,`exerciseTwo`,`exerciseThree`,`exerciseFour`,`exerciseFive`,`exerciseSix`,`exerciseSeven`,`exerciseEight`,`exerciseNine`,`exerciseTen`) VALUES(:id, :name, :description, :numberOfSeries, :exerciseOne, :exerciseTwo, :exerciseThree, :exerciseFour, :exerciseFive, :exerciseSix, :exerciseSeven, exerciseEight, :exerciseNine, exerciseTen)", {
+        await pool.execute("INSERT INTO `trainings`(`id`,`name`,`description`,`numberOfSeries`,`exerciseOne`,`pauseOne`,`exerciseTwo`,`pauseTwo`,`exerciseThree`,`pauseThree`,`exerciseFour`,`pauseFour`,`exerciseFive`,`pauseFive`,`exerciseSix`,`pauseSix`,`exerciseSeven`,`pauseSeven`,`exerciseEight`,`pauseEight`,`exerciseNine`,`pauseNine`,`exerciseTen`,`pauseTen`) VALUES(:id, :name, :description, :numberOfSeries, :exerciseOne, :pauseOne, :exerciseTwo, :pauseTwo, :exerciseThree, :pauseThree, :exerciseFour, :pauseFour, :exerciseFive, :pauseFive, :exerciseSix, :pauseSix, :exerciseSeven, :pauseSeven, :exerciseEight, :pauseEight, :exerciseNine, :pauseNine, :exerciseTen, :pauseTen)", {
             id: this.id,
             name: this.name,
             description: this.description,
@@ -151,7 +175,7 @@ export class TrainingRecord implements TrainingEntity {
     }
 
     async update(): Promise<void> {
-        await pool.execute("UPDATE `trainings` SET `name` = :name, `description` = description,`numberOfSeries` = :numberOfSeries,`exerciseOne` = :exerciseOne,`exerciseTwo` = :exerciseTwo,`exerciseThree` = :exerciseThree,`exerciseFour` = :exerciseFour,`exerciseFive` = :exerciseFive,`exerciseSix` = :exerciseSix,`exerciseSeven` = :exerciseSeven,`exerciseEight` = :exerciseEight,`exerciseNine` = :exerciseNine,`exerciseTen` = :exerciseTen WHERE `id` = :id", {
+        await pool.execute("UPDATE `trainings` SET `name` = :name, `description` = description,`numberOfSeries` = :numberOfSeries,`exerciseOne` = :exerciseOne, `pauseOne` = :pauseOne, `exerciseTwo` = :exerciseTwo, `pauseTwo` = :pauseTwo,`exerciseThree` = :exerciseThree,`pauseThree` = :pauseThree, `exerciseFour` = :exerciseFour, `pauseFour` = :pauseFour, `exerciseFive` = :exerciseFive, `pauseFive` = :pauseFive, `exerciseSix` = :exerciseSix, `pauseSix` = :pauseSix, `exerciseSeven` = :exerciseSeven, `pauseSeven` = :pauseSeven, `exerciseEight` = :exerciseEight, `pauseEight` = :pauseEight, `exerciseNine` = :exerciseNine, `pauseNine` = :pauseNine, `exerciseTen` = :exerciseTen, `pauseTen` = :pauseTen WHERE `id` = :id", {
             id: this.id,
             name: this.name,
             description: this.description,
