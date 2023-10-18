@@ -24,7 +24,8 @@ export const trainingsRouter: Router = Router()
         const training = await TrainingRecord.getOne(req.params.id);
 
         if (!training) {
-            throw new ValidationError('Trening o danym ID nie istnieje w bazie danych.')
+            throw new ValidationError(
+                'Trening o danym ID nie istnieje w bazie danych.')
         }
 
         await training.delete();
@@ -35,7 +36,8 @@ export const trainingsRouter: Router = Router()
         const training = await TrainingRecord.getOne(req.params.id);
 
         if (!training) {
-            throw new ValidationError('Trening o danym ID nie istnieje w bazie danych.')
+            throw new ValidationError(
+                'Trening o danym ID nie istnieje w bazie danych.')
         }
 
         const newTraining = new TrainingRecord({

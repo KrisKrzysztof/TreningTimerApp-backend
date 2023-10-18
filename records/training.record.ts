@@ -75,6 +75,22 @@ export class TrainingRecord implements TrainingEntity {
             throw new ValidationError('Do każdego ćwiczenia musi być przypisana jakaś pauza (liczba między 1 a 9). Jeśli jest to ostatnia pauza w treningu nie będzie ona uwzględniana w trakcie treningu, ale wartość w formularzu należy podać.')
         }
 
+        if (
+            obj.pauseOne && !obj.exerciseOne ||
+            obj.pauseTwo && !obj.exerciseTwo ||
+            obj.pauseThree && !obj.exerciseThree ||
+            obj.pauseFour && !obj.exerciseFour ||
+            obj.pauseFive && !obj.exerciseFive ||
+            obj.pauseSix && !obj.exerciseSix ||
+            obj.pauseSeven && !obj.exerciseSeven ||
+            obj.pauseEight && !obj.exerciseEight ||
+            obj.pauseNine && !obj.exerciseNine ||
+            obj.pauseTen && !obj.exerciseTen
+        ) {
+            throw new ValidationError('Nie podano nazwy ćwiczenia w conajmniej jednym polu, w którym podano czas pauzy dla ćwiczenia. Sprawdź jeszcze raz prawidłowość formularza.')
+        }
+
+
         this.id = obj.id;
         this.name = obj.name;
         this.description = obj.description;
