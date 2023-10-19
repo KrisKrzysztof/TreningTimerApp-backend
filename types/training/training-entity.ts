@@ -1,6 +1,8 @@
 export interface NewTrainingEntity extends Omit<TrainingEntity, 'id'> {
     id?: string;
 }
+// export type NewTrainingEntity = Omit<TrainingEntity, 'id'>;
+
 
 export interface TrainingEntity {
     id: string;
