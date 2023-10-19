@@ -23,7 +23,7 @@ export const trainingsRouter: Router = Router()
     .delete('/:id', async (req, res) => {
 
         if (req.params.id.startsWith('protected')) {
-            throw new ValidationError('ten trening jest chroniony');
+            throw new ValidationError('Ten trening jest chroniony.');
         }
 
         const training = await TrainingRecord.getOne(req.params.id);
@@ -38,6 +38,11 @@ export const trainingsRouter: Router = Router()
     })
 
     .patch('/:id', async (req, res) => {
+
+        if (req.params.id.startsWith('protected')) {
+            throw new ValidationError('Ten trening jest chroniony.');
+        }
+
         const training = await TrainingRecord.getOne(req.params.id);
 
         if (!training) {
