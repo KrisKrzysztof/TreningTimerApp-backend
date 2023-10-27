@@ -146,3 +146,5 @@ dist
 .idea
 
 config/config.ts
+
+notatki.js

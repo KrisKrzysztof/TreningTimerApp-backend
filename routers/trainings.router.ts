@@ -11,6 +11,9 @@ export const trainingsRouter: Router = Router()
 
     .get('/:id', async (req, res) => {
         const training = await TrainingRecord.getOne(req.params.id);
+        if (!training) {
+            throw new ValidationError('Trening z podanym ID nie istnieje. ');
+        }
         res.json(training);
     })
 

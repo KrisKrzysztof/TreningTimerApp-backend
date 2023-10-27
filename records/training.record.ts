@@ -9,7 +9,7 @@ type TrainingRecordResults = [TrainingEntity[], FieldPacket[]];
 export class TrainingRecord implements TrainingEntity {
     id: string;
     name: string;
-    description: string;
+    description: string | null;
     numberOfSeries: number;
     exerciseOne: string;
     pauseOne: number;
@@ -53,36 +53,36 @@ export class TrainingRecord implements TrainingEntity {
         if (
             (obj.exerciseOne && !obj.pauseOne ||
                 obj.exerciseOne &&
-                (obj.pauseOne < 0.01 || obj.pauseOne > 10)) ||
+                (obj.pauseOne < 0.001 || obj.pauseOne > 10)) ||
             (obj.exerciseTwo && !obj.pauseTwo ||
                 obj.exerciseTwo &&
-                (obj.pauseTwo < 0.01 || obj.pauseTwo > 10)) ||
+                (obj.pauseTwo < 0.001 || obj.pauseTwo > 10)) ||
             (obj.exerciseThree && !obj.pauseThree ||
                 obj.exerciseThree &&
-                (obj.pauseThree < 0.01 || obj.pauseThree > 10)) ||
+                (obj.pauseThree < 0.001 || obj.pauseThree > 10)) ||
             (obj.exerciseFour && !obj.pauseFour ||
                 obj.exerciseFour &&
-                (obj.pauseFour < 0.01 || obj.pauseFour > 10)) ||
+                (obj.pauseFour < 0.001 || obj.pauseFour > 10)) ||
             (obj.exerciseFive && !obj.pauseFive ||
                 obj.exerciseFive &&
-                (obj.pauseFive < 0.01 || obj.pauseFive > 10)) ||
+                (obj.pauseFive < 0.001 || obj.pauseFive > 10)) ||
             (obj.exerciseSix && !obj.pauseSix ||
                 obj.exerciseSix &&
-                (obj.pauseSix < 0.01 || obj.pauseSix > 10)) ||
+                (obj.pauseSix < 0.001 || obj.pauseSix > 10)) ||
             (obj.exerciseSeven && !obj.pauseSeven ||
                 obj.exerciseSeven &&
-                (obj.pauseSeven < 0.01 || obj.pauseSeven > 10)) ||
+                (obj.pauseSeven < 0.001 || obj.pauseSeven > 10)) ||
             (obj.exerciseEight && !obj.pauseEight ||
                 obj.exerciseEight &&
-                (obj.pauseEight < 0.01 || obj.pauseEight > 10)) ||
+                (obj.pauseEight < 0.001 || obj.pauseEight > 10)) ||
             (obj.exerciseNine && !obj.pauseNine ||
                 obj.exerciseNine &&
-                (obj.pauseNine < 0.01 || obj.pauseNine > 10)) ||
+                (obj.pauseNine < 0.001 || obj.pauseNine > 10)) ||
             (obj.exerciseTen && !obj.pauseTen ||
                 obj.exerciseTen &&
-                (obj.pauseTen < 0.01 || obj.pauseTen > 10))
+                (obj.pauseTen < 0.001 || obj.pauseTen > 10))
         ) {
-            throw new ValidationError('Do każdego ćwiczenia musi być przypisana jakaś pauza (liczba między 1 a 9). Jeśli jest to ostatnia pauza w treningu nie będzie ona uwzględniana w trakcie treningu, ale wartość w formularzu należy podać.')
+            throw new ValidationError('Do każdego ćwiczenia musi być przypisana jakaś pauza (liczba między 0,001 a 10). Jeśli jest to ostatnia pauza w treningu nie będzie ona uwzględniana w trakcie treningu, ale wartość w formularzu należy podać.')
         }
 
         if (
@@ -201,7 +201,7 @@ export class TrainingRecord implements TrainingEntity {
     }
 
     async update(): Promise<void> {
-        await pool.execute("UPDATE `trainings` SET `name` = :name, `description` = description,`numberOfSeries` = :numberOfSeries,`exerciseOne` = :exerciseOne, `pauseOne` = :pauseOne, `exerciseTwo` = :exerciseTwo, `pauseTwo` = :pauseTwo,`exerciseThree` = :exerciseThree,`pauseThree` = :pauseThree, `exerciseFour` = :exerciseFour, `pauseFour` = :pauseFour, `exerciseFive` = :exerciseFive, `pauseFive` = :pauseFive, `exerciseSix` = :exerciseSix, `pauseSix` = :pauseSix, `exerciseSeven` = :exerciseSeven, `pauseSeven` = :pauseSeven, `exerciseEight` = :exerciseEight, `pauseEight` = :pauseEight, `exerciseNine` = :exerciseNine, `pauseNine` = :pauseNine, `exerciseTen` = :exerciseTen, `pauseTen` = :pauseTen WHERE `id` = :id", {
+        await pool.execute("UPDATE `trainings` SET `name` = :name, `description` = :description, `numberOfSeries` = :numberOfSeries, `exerciseOne` = :exerciseOne, `pauseOne` = :pauseOne, `exerciseTwo` = :exerciseTwo, `pauseTwo` = :pauseTwo, `exerciseThree` = :exerciseThree, `pauseThree` = :pauseThree, `exerciseFour` = :exerciseFour, `pauseFour` = :pauseFour, `exerciseFive` = :exerciseFive, `pauseFive` = :pauseFive, `exerciseSix` = :exerciseSix, `pauseSix` = :pauseSix, `exerciseSeven` = :exerciseSeven, `pauseSeven` = :pauseSeven, `exerciseEight` = :exerciseEight, `pauseEight` = :pauseEight, `exerciseNine` = :exerciseNine, `pauseNine` = :pauseNine, `exerciseTen` = :exerciseTen, `pauseTen` = :pauseTen WHERE `id` = :id", {
             id: this.id,
             name: this.name,
             description: this.description,
