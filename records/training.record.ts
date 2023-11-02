@@ -53,36 +53,36 @@ export class TrainingRecord implements TrainingEntity {
         if (
             (obj.exerciseOne && !obj.pauseOne ||
                 obj.exerciseOne &&
-                (obj.pauseOne < 0.001 || obj.pauseOne > 10)) ||
+                (obj.pauseOne < 1 || obj.pauseOne > 600)) ||
             (obj.exerciseTwo && !obj.pauseTwo ||
                 obj.exerciseTwo &&
-                (obj.pauseTwo < 0.001 || obj.pauseTwo > 10)) ||
+                (obj.pauseTwo < 1 || obj.pauseTwo > 600)) ||
             (obj.exerciseThree && !obj.pauseThree ||
                 obj.exerciseThree &&
-                (obj.pauseThree < 0.001 || obj.pauseThree > 10)) ||
+                (obj.pauseThree < 1 || obj.pauseThree > 600)) ||
             (obj.exerciseFour && !obj.pauseFour ||
                 obj.exerciseFour &&
-                (obj.pauseFour < 0.001 || obj.pauseFour > 10)) ||
+                (obj.pauseFour < 1 || obj.pauseFour > 600)) ||
             (obj.exerciseFive && !obj.pauseFive ||
                 obj.exerciseFive &&
-                (obj.pauseFive < 0.001 || obj.pauseFive > 10)) ||
+                (obj.pauseFive < 1 || obj.pauseFive > 600)) ||
             (obj.exerciseSix && !obj.pauseSix ||
                 obj.exerciseSix &&
-                (obj.pauseSix < 0.001 || obj.pauseSix > 10)) ||
+                (obj.pauseSix < 1 || obj.pauseSix > 600)) ||
             (obj.exerciseSeven && !obj.pauseSeven ||
                 obj.exerciseSeven &&
-                (obj.pauseSeven < 0.001 || obj.pauseSeven > 10)) ||
+                (obj.pauseSeven < 1 || obj.pauseSeven > 600)) ||
             (obj.exerciseEight && !obj.pauseEight ||
                 obj.exerciseEight &&
-                (obj.pauseEight < 0.001 || obj.pauseEight > 10)) ||
+                (obj.pauseEight < 1 || obj.pauseEight > 600)) ||
             (obj.exerciseNine && !obj.pauseNine ||
                 obj.exerciseNine &&
-                (obj.pauseNine < 0.001 || obj.pauseNine > 10)) ||
+                (obj.pauseNine < 1 || obj.pauseNine > 600)) ||
             (obj.exerciseTen && !obj.pauseTen ||
                 obj.exerciseTen &&
-                (obj.pauseTen < 0.001 || obj.pauseTen > 10))
+                (obj.pauseTen < 1 || obj.pauseTen > 600))
         ) {
-            throw new ValidationError('Do każdego ćwiczenia musi być przypisana jakaś pauza (liczba między 0,001 a 10). Jeśli jest to ostatnia pauza w treningu nie będzie ona uwzględniana w trakcie treningu, ale wartość w formularzu należy podać.')
+            throw new ValidationError('Do każdego ćwiczenia musi być przypisana jakaś pauza (od 1 do 10 minut). Jeśli jest to ostatnia pauza w treningu nie będzie ona uwzględniana w trakcie treningu, ale należy podać jakąkolwiek wartość w formularzu.')
         }
 
         if (
