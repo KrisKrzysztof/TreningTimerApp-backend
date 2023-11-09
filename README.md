@@ -2,7 +2,6 @@
 ## of `Training Timer APP` project !
 <br/>
 
-[//]: # (<img src='https://github.com/KrisKrzysztof/TreningTimerApp-frontend/blob/master/src/assets/logo.gif' width="230" align="right" alt="logo">)
 <img src='https://raw.githubusercontent.com/KrisKrzysztof/TreningTimerApp-frontend/master/src/assets/logo.gif' width="230" align="right" alt="logo">
 
 
@@ -37,7 +36,7 @@ There are **three main parts** of the application:
 <p align="right">(<a href="#welcome-to-readme">back to top</a>)</p>
 
 ## Project built with
-#### Technology used in this project (both frontend and [backend](https://github.com/KrisKrzysztof/TreningTimerApp-backend)):
+#### Technology used in this project (both backend and [frontend](https://github.com/KrisKrzysztof/TreningTimerApp-frontend)):
 
 * [Node.js](https://nodejs.org)
 * [Typescript](https://www.typescriptlang.org)
@@ -88,38 +87,38 @@ Here is preview of table structure for the database in SQL:
 | 24 | pauseTen       |    int(3)    |     yes      |      null      |
 
 I know that this table is a little monster, and it makes next monsters in further code, but I am beginner and I did this project after working hours, so I could not find time to make it in a better way.\
-Of course, I prepared more simple method to create compatible database and even  table with data for this project, you can just run SQL from [this file](../../TreningTimerApp/trening-frontend/repo_utils/database/trainings.sql) in your SQL client.
+Of course, I prepared more simple method to create compatible database and even  table with data for this project, you can just run SQL from [this file](https://raw.githubusercontent.com/KrisKrzysztof/TreningTimerApp-frontend/master/repo_utils/database/trainings.sql) in your SQL client.
 
 <p align="right">(<a href="#welcome-to-readme">back to top</a>)</p> 
 
 ## Shots
 
 ### Main page
-![Main page](../../TreningTimerApp/trening-frontend/repo_utils/screenshots/MainPageZoomOutpng.jpg)
+![Main page](https://raw.githubusercontent.com/KrisKrzysztof/TreningTimerApp-frontend/master/repo_utils/screenshots/MainPageZoomOutpng.jpg)
 <p align="right">(<a href="#how-to-run">next chapter</a> or <a href="#welcome-to-readme">back to top</a>)</p> 
 
 ### Training choosing
-![Training choosing](../../TreningTimerApp/trening-frontend/repo_utils/screenshots/TraninigChooice.jpg)
+![Training choosing](https://raw.githubusercontent.com/KrisKrzysztof/TreningTimerApp-frontend/master/repo_utils/screenshots/TraninigChooice.jpg)
 <p align="right">(<a href="#how-to-run">next chapter</a> or <a href="#welcome-to-readme">back to top</a>)</p>
 
 ### Training timer
-![Training timer](../../TreningTimerApp/trening-frontend/repo_utils/screenshots/TraninigTimer.jpg)
+![Training timer](https://raw.githubusercontent.com/KrisKrzysztof/TreningTimerApp-frontend/master/repo_utils/screenshots/TraninigTimer.jpg)
 <p align="right">(<a href="#how-to-run">next chapter</a> or <a href="#welcome-to-readme">back to top</a>)</p>
 
 ### Training task
-![Training task](../../TreningTimerApp/trening-frontend/repo_utils/screenshots/TraninigTimerTask.jpg)
+![Training task](https://raw.githubusercontent.com/KrisKrzysztof/TreningTimerApp-frontend/master/repo_utils/screenshots/TraninigTimerTask.jpg)
 <p align="right">(<a href="#how-to-run">next chapter</a> or <a href="#welcome-to-readme">back to top</a>)</p>
 
 ### Edit page
-![Edit page](../../TreningTimerApp/trening-frontend/repo_utils/screenshots/EditPage.jpg)
+![Edit page](https://raw.githubusercontent.com/KrisKrzysztof/TreningTimerApp-frontend/master/repo_utils/screenshots/EditPage.jpg)
 <p align="right">(<a href="#how-to-run">next chapter</a> or <a href="#welcome-to-readme">back to top</a>)</p>
 
 ### Adding new training
-![Adding new training](../../TreningTimerApp/trening-frontend/repo_utils/screenshots/AddNewTraining.jpg)
+![Adding new training](https://raw.githubusercontent.com/KrisKrzysztof/TreningTimerApp-frontend/master/repo_utils/screenshots/AddNewTraining.jpg)
 <p align="right">(<a href="#how-to-run">next chapter</a> or <a href="#welcome-to-readme">back to top</a>)</p>
 
 ### Modifying training
-![Modifying training](../../TreningTimerApp/trening-frontend/repo_utils/screenshots/EditTraining.jpg)
+![Modifying training](https://raw.githubusercontent.com/KrisKrzysztof/TreningTimerApp-frontend/master/repo_utils/screenshots/EditTraining.jpg)
 <p align="right">(<a href="#welcome-to-readme">back to top</a>)</p> 
 
 
