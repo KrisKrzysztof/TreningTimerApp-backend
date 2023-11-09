@@ -1,20 +1,32 @@
 export interface NewTrainingEntity extends Omit<TrainingEntity, 'id'> {
     id?: string;
 }
+// export type NewTrainingEntity = Omit<TrainingEntity, 'id'>;
+
 
 export interface TrainingEntity {
     id: string;
     name: string;
+    description: string | null;
     numberOfSeries: number;
-    exercise1name: string;
-    exercise1pause: number;
-    exercise2name?: string;
-    exercise2pause?: number;
-    exercise3name?: string;
-    exercise3pause?: number;
-    exercise4name?: string;
-    exercise4pause?: number;
-    exercise5name?: string;
-    exercise5pause?: number;
-    exercisesOrderInSerie: string[];
+    exerciseOne: string;
+    pauseOne: number;
+    exerciseTwo?: string;
+    pauseTwo?: number;
+    exerciseThree?: string;
+    pauseThree?: number;
+    exerciseFour?: string;
+    pauseFour?: number;
+    exerciseFive?: string;
+    pauseFive?: number;
+    exerciseSix?: string;
+    pauseSix?: number;
+    exerciseSeven?: string;
+    pauseSeven?: number;
+    exerciseEight?: string;
+    pauseEight?: number;
+    exerciseNine?: string;
+    pauseNine?: number;
+    exerciseTen?: string;
+    pauseTen?: number;
 }
