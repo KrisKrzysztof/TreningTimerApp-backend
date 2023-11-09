@@ -14,7 +14,7 @@ app.use(cors({
 app.use(json());
 app.use(rateLimit({
     windowMs: 5 * 60 * 1000, // 15 minutes
-    max: 100, // number of request in time above
+    max: 50, // number of request in time above
 }));
 
 const router = Router();
