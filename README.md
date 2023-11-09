@@ -3,7 +3,7 @@
 <br/>
 
 [//]: # (<img src='https://github.com/KrisKrzysztof/TreningTimerApp-frontend/blob/master/src/assets/logo.gif' width="230" align="right" alt="logo">)
-<img src='../../TreningTimerApp/trening-frontend/src/assets/logo.gif' width="230" align="right" alt="logo">
+<img src='https://raw.githubusercontent.com/KrisKrzysztof/TreningTimerApp-frontend/master/src/assets/logo.gif' width="230" align="right" alt="logo">
 
 
 ### Table of Contents
