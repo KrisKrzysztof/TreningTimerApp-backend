@@ -4,7 +4,6 @@
 
 <img src='https://raw.githubusercontent.com/KrisKrzysztof/TreningTimerApp-frontend/master/src/assets/logo.gif' width="230" align="right" alt="logo">
 
-
 ### Table of Contents
 1. [About me](#at-first-a-few-words-about-me)
 2. [Project introduction](#introducing-the-training-timer-app)
@@ -57,11 +56,11 @@ There are **three main parts** of the application:
 
 ## Database
 As mentioned before, there is a database required for this application to run.\
-Here is preview of table structure for the database in SQL:
+Here is the table what shows the structure of the database in SQL:
 
-| #  | Column name    |     Type     | Null allowed | Default  value |
+| #  | Column         |     Type     | Null allowed | Default  value |
 |----|:---------------|:------------:|:------------:|:--------------:|
-| 1  | id             | varchar(36)  |      no      |     uuid()     |
+| 1  | id (primary)   | varchar(36)  |      no      |     uuid()     |
 | 2  | name           | varchar(25)  |      no      |                |
 | 3  | description    |   tinytext   |     yes      |      null      |
 | 4  | numberOfSeries |    int(2)    |      no      |                |
