@@ -34,8 +34,8 @@ export class TrainingRecord implements TrainingEntity {
 
     constructor(obj: NewTrainingEntity) {
 
-        if (!obj.name || obj.name.length < 3 || obj.name.length > 25) {
-            throw new ValidationError('Nazwa treningu musi zawierać od 3 do 25 znaków.');
+        if (!obj.name || obj.name.length < 3 || obj.name.length > 30) {
+            throw new ValidationError('Nazwa treningu musi zawierać od 3 do 30 znaków.');
         }
 
         if (obj.description && obj.description.length > 255) {
