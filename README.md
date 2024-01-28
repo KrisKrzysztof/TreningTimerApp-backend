@@ -151,6 +151,6 @@ This work learned me a lot and I hope that this knowledge will be useful and wil
 
 
 ## Contact
-You can contact author of this project via [facebook](https://www.facebook.com/krzysztof.ivan) messenger.
+You can contact author of this project sending message via [linkedin](https://www.linkedin.com/in/krzysztofams).
 
 <p align="right">(<a href="#welcome-to-readme">back to top</a>)</p>

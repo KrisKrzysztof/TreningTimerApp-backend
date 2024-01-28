@@ -145,6 +145,8 @@ dist
 
 .idea
 
+.git
+
 config/config.ts
 
 notatki.txt
